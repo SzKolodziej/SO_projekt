@@ -96,5 +96,21 @@ do
         fi
 done
 
-echo $result|tr .- $dot$dash
+result=$result|tr .- $dot$dash
 
+for ((i = 0; i < ${#result}; i++))
+do
+	char=${result:i:1}
+
+	echo -n "$char"
+	if [[ $char == $dot ]]; then
+		echo -en "\a"
+		sleep .15
+	elif [[ $char == $dash ]]; then
+		echo -en "\a"
+		sleep .4
+	elif [[ $char == " " ]]; then 
+		sleep .5
+	fi
+done
+echo
