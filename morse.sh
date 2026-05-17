@@ -96,20 +96,19 @@ do
         fi
 done
 
-result=$result|tr .- $dot$dash
+echo $result|sed "s/\./$dot/g; s/-/$dash/g"
 
 for ((i = 0; i < ${#result}; i++))
 do
 	char=${result:i:1}
 
-	echo -n "$char"
-	if [[ $char == $dot ]]; then
+	if [[ $char == '.' ]]; then
 		echo -en "\a"
 		sleep .15
-	elif [[ $char == $dash ]]; then
+	elif [[ $char == '-' ]]; then
 		echo -en "\a"
 		sleep .4
-	elif [[ $char == " " ]]; then 
+	elif [[ $char == " " ]]; then
 		sleep .5
 	fi
 done
