@@ -17,10 +17,8 @@ help() {
         echo -e "\t-d\t\tchanges dot sign (pattern: morse -d=[sign]"
         echo -e "\t-D\t\tchanges dash sign (pattern: morse -D=[sign]"
         echo -e "\t-i\t\tignores signs without it's morse code substitute"
-        echo -e "\t  \t\t  and skips them"
-        echo -e "\t-I\t\tignores signs without it's morse code substitute"
-        echo -e "\t  \t\t  and rewrites them"
-        echo -e "   Exit status:\n\t0 if OK,\n\t1 if a problem is encounted"
+        echo -e "\t  \t\t  and skips them" 
+     	echo -e "   Exit status:\n\t0 if OK,\n\t1 if a problem is encounted"
         exit 0
 }
 
@@ -44,10 +42,6 @@ do
                         ;;
                 -i)
                         ignore="1"
-                        shift
-                        ;;
-                -I)
-                        ignore="2"
                         shift
                         ;;
                 --)
@@ -85,9 +79,7 @@ do
                 #echo -n " "
                 result+="/ "
         else
-                if [[ $ignore == "2" ]] ; then
-                        result+="${text:i:1} "
-                elif [[ $ignore == "1" ]] ; then
+                if [[ $ignore == "1" ]] ; then
                         continue
                 else
                         result="Invalid symbol"
@@ -112,4 +104,3 @@ do
 		sleep .5
 	fi
 done
-echo
